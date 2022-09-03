@@ -1,6 +1,5 @@
 import sys
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
+
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
 from PyQt5.QtWidgets import QCheckBox
@@ -17,17 +16,17 @@ class CheckBoxDemo(QWidget):
 
         self.checkBox1 = QCheckBox("&CheckBox1")
         self.checkBox1.setChecked(True)
-        self.checkBox1.stateChanged.connect(lambda: self.btnState(self.checkBox1))
+        self.checkBox1.stateChanged.connect(self.btnState)
         formLayout.addWidget(self.checkBox1)
 
         self.checkBox2 = QCheckBox("CheckBox2")
-        self.checkBox2.toggled.connect(lambda: self.btnState(self.checkBox2))
+        self.checkBox2.toggled.connect(self.btnState)
         formLayout.addWidget(self.checkBox2)
 
         self.checkBox3 = QCheckBox("CheckBox3")
         self.checkBox3.setTristate(True)
         self.checkBox3.setCheckState(Qt.PartiallyChecked)
-        self.checkBox3.stateChanged.connect(lambda: self.btnState(self.checkBox3))
+        self.checkBox3.stateChanged.connect(self.btnState)
         formLayout.addWidget(self.checkBox3)
 
         groupBox.setLayout(formLayout)
@@ -37,7 +36,7 @@ class CheckBoxDemo(QWidget):
         self.setLayout(miaiLayout)
         self.setWindowTitle("CheckBox Demo")
 
-    def btnState(self, btn: QCheckBox):
+    def btnState(self):
         chk1Status = self.checkBox1.text() + ", isChecked=" + str(self.checkBox1.isChecked()) + ", checkState=" + str(
             self.checkBox1.checkState()) + "\n"
         chk2Status = self.checkBox2.text() + ", isChecked=" + str(self.checkBox2.isChecked()) + ", checkState=" + str(
