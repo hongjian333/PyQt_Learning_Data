@@ -20,6 +20,8 @@ class TableViewModelDemo(QWidget):
 
         self.tableView = QTableView()
         self.tableView.setModel(self.model)
+        # self.tableView.horizontalHeader().setStretchLastSection(True)
+        # self.tableView.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         formLayout = QVBoxLayout()
         formLayout.addWidget(self.tableView)
